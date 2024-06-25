@@ -89,6 +89,8 @@ dependencies {
     implementation(libs.glide)
 
 
+}
 
-
+kapt {
+    correctErrorTypes = true
 }

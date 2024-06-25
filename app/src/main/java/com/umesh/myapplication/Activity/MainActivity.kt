@@ -1,9 +1,10 @@
-package com.umesh.myapplication
+package com.umesh.myapplication.Activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.github.matteobattilana.weather.PrecipType
 import com.github.matteobattilana.weather.WeatherView
+import com.umesh.myapplication.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
