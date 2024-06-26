@@ -1,6 +1,6 @@
 package com.umesh.myapplication.Server
 
-import com.umesh.myapplication.model.CurrentResponseApi
+import com.umesh.myapplication.Model.CurrentResponseApi
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

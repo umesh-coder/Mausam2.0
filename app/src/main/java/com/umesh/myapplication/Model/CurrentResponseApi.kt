@@ -1,4 +1,4 @@
-package com.umesh.myapplication.model
+package com.umesh.myapplication.Model
 
 
 import com.google.gson.annotations.SerializedName
