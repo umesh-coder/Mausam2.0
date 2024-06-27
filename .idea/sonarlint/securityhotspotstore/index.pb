@@ -33,3 +33,7 @@ P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 v
 Fapp/src/main/java/com/umesh/myapplication/Model/ForecastResponseApi.kt,2\5\25bc14221173e30b4ede55b732dc8c9ecb587c7a
+v
+Fapp/src/main/java/com/umesh/myapplication/Adapter/ForecastAdapter.java,3\1\3133ecce6d741ad4cae7bc43370c20f284770619
+t
+Dapp/src/main/java/com/umesh/myapplication/Adapter/ForecastAdapter.kt,6\1\61acc54d16b05979e7b7a2db36a906413a29522a

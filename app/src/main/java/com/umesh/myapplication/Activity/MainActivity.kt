@@ -3,15 +3,21 @@ package com.umesh.myapplication.Activity
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
+import android.view.ViewOutlineProvider
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.matteobattilana.weather.PrecipType
+import com.umesh.myapplication.Adapter.ForecastAdapter
 import com.umesh.myapplication.Model.CurrentResponseApi
+import com.umesh.myapplication.Model.ForecastResponseApi
 import com.umesh.myapplication.R
 import com.umesh.myapplication.ViewModel.WeatherViewModel
 import com.umesh.myapplication.databinding.ActivityMainBinding
+import eightbitlab.com.blurview.RenderScriptBlur
 import retrofit2.Call
 import retrofit2.Response
 import java.util.Calendar
@@ -21,6 +27,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var bindding: ActivityMainBinding
     private val calendar by lazy { Calendar.getInstance() }
     private val weatherViewModel: WeatherViewModel by viewModels()
+    private val forecastAdapter by lazy { ForecastAdapter() }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindding = ActivityMainBinding.inflate(layoutInflater)
@@ -81,12 +90,59 @@ class MainActivity : AppCompatActivity() {
                 })
 
 
+            //setting blur view
+            var radius = 10f
+            val decorView = window.decorView
+            val rootView = (decorView.findViewById(android.R.id.content) as ViewGroup?)
+            val windowBackground = decorView.background
+
+            rootView?.let {
+                blurView.setupWith(it, RenderScriptBlur(this@MainActivity))
+                    .setFrameClearDrawable(windowBackground)
+                    .setBlurRadius(radius)
+                blurView.outlineProvider = ViewOutlineProvider.BACKGROUND
+                blurView.clipToOutline = true
+            }
+
+            //forecast temp
+            weatherViewModel.loadForecastWeatherData(lat, lon, "Metric")
+                .enqueue(object : retrofit2.Callback<ForecastResponseApi> {
+                    override fun onResponse(
+                        p0: Call<ForecastResponseApi>,
+                        p1: Response<ForecastResponseApi>
+                    ) {
+                        if (p1.isSuccessful) {
+                            val forecastWeatherData = p1.body()
+                            blurView.visibility = View.VISIBLE
+
+                            forecastWeatherData?.let {
+                                forecastAdapter.differ.submitList(it.list?.toMutableList())
+                                forecastView.apply {
+                                    layoutManager = LinearLayoutManager(
+                                        this@MainActivity,
+                                        LinearLayoutManager.HORIZONTAL,
+                                        false
+                                    )
+                                    adapter = forecastAdapter
+
+                                }
+                            }
+                        }
+                    }
+
+                    override fun onFailure(p0: Call<ForecastResponseApi>, p1: Throwable) {
+                        TODO("Not yet implemented")
+                    }
+
+                })
+
+
         }
     }
 
     private fun isNightNow(): Boolean {
 
-        return calendar.get(Calendar.HOUR_OF_DAY) >= 5
+        return calendar.get(Calendar.HOUR_OF_DAY) >= 18
     }
 
     private fun setDynamicallyWallpaper(icon: String): Int {

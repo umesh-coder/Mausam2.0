@@ -252,12 +252,15 @@
     </LinearLayout>
 
     <eightbitlab.com.blurview.BlurView
+        android:id="@+id/blurView"
         android:layout_width="match_parent"
         android:layout_height="143dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="32dp"
+        android:background="@drawable/forecast_bg"
         android:visibility="gone"
+        app:blurOverlayColor="#10ffffff"
         app:layout_constraintBottom_toBottomOf="@+id/bgImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
