@@ -11,7 +11,7 @@ data class ForecastResponseApi(
     @SerializedName("cod")
     val cod: String?,
     @SerializedName("list")
-    val list: List<?>?,
+    val list: List<data>?,
     @SerializedName("message")
     val message: Int?
 ) {
@@ -41,7 +41,7 @@ data class ForecastResponseApi(
         )
     }
 
-    data class (
+    data class data(
         @SerializedName("clouds")
         val clouds: Clouds?,
         @SerializedName("dt")

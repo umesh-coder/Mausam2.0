@@ -31,3 +31,5 @@ w
 Gapp/src/main/java/com/umesh/myapplication/ViewModel/WeatherViewModel.kt,7\5\7559d2c086df890451aefc11c64bb455bdaeaddd
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+v
+Fapp/src/main/java/com/umesh/myapplication/Model/ForecastResponseApi.kt,2\5\25bc14221173e30b4ede55b732dc8c9ecb587c7a

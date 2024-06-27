@@ -7,10 +7,12 @@ import com.umesh.myapplication.Server.ApiService
 
 class WeatherViewModel(private val repository: WeatherRepository) : ViewModel() {
 
-constructor():this(WeatherRepository(ApiClient().getClient().create(ApiService::class.java)))
+    constructor() : this(WeatherRepository(ApiClient().getClient().create(ApiService::class.java)))
 
     fun loadCurrentWeatherData(lat: Double, lon: Double, units: String) =
         repository.getCurrentWeatherData(lat, lon, units)
 
 
+    fun loadForecastWeatherData(lat: Double, lon: Double, units: String) =
+        repository.getForecastWeatherData(lat, lon, units)
 }
