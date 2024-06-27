@@ -10,7 +10,8 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:layout_marginTop="5dp"
+        android:id="@+id/bgImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
@@ -18,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/sunny_bg" />
+        app:srcCompat="@drawable/sunny_bg" />
 
     <com.github.matteobattilana.weather.WeatherView
         android:id="@+id/weatherView"
@@ -38,9 +39,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:src="@drawable/plus"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/plus" />
 
     <TextView
         android:id="@+id/cityText"
@@ -88,7 +89,7 @@
                 android:id="@+id/imageView51"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:srcCompat="@drawable/wind" />
+                app:srcCompat="@drawable/wind" />
 
             <TextView
                 android:id="@+id/windText"
@@ -217,7 +218,7 @@
                 android:id="@+id/imageView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:srcCompat="@drawable/humidity" />
+                app:srcCompat="@drawable/humidity" />
 
             <TextView
                 android:id="@+id/humidityText"

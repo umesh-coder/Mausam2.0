@@ -7,6 +7,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.github.matteobattilana.weather.PrecipType
 import com.umesh.myapplication.Model.CurrentResponseApi
 import com.umesh.myapplication.R
 import com.umesh.myapplication.ViewModel.WeatherViewModel
@@ -53,18 +54,24 @@ class MainActivity : AppCompatActivity() {
                             currentWeatherData?.let {
                                 statusText.text = it.weather?.get(0)?.main ?: "-"
                                 windText.text =
-                                    it.wind.speed.let { Math.round(it).toString() } + "Km"
+                                    it.wind?.speed?.let { Math.round(it).toString() } + "Km"
+
+                                humidityText.text = it.main?.humidity.toString() + "%"
                                 currentTempText.text =
-                                    it.main.temp.let { Math.round(it).toString() } + "°"
+                                    it.main?.temp?.let { Math.round(it).toString() } + "°"
                                 maxTempText.text =
-                                    it.main.tempMax.let { Math.round(it).toString() } + "°"
+                                    it.main?.tempMax?.let { Math.round(it).toString() } + "°"
                                 minTempText.text =
-                                    it.main.tempMin.let { Math.round(it).toString() } + "°"
+                                    it.main?.tempMin?.let { Math.round(it).toString() } + "°"
 
-                                val drawable = if (isNightNow()) R.drawable.night_bg else {
-
+                                val drawable = if (isNightNow()) R.drawable.night_bg
+                                else {
+                                    setDynamicallyWallpaper(it.weather?.get(0)?.icon ?: "-")
 
                                 }
+
+                                bgImageView.setImageResource(drawable)
+                                setEffectRainSnow(it.weather?.get(0)?.icon ?: "-")
                             }
 
                         }
@@ -79,13 +86,78 @@ class MainActivity : AppCompatActivity() {
 
     private fun isNightNow(): Boolean {
 
-        return calendar.get(Calendar.HOUR_OF_DAY) >= 18
+        return calendar.get(Calendar.HOUR_OF_DAY) >= 5
     }
 
     private fun setDynamicallyWallpaper(icon: String): Int {
         return when (icon.dropLast(1)) {
-            "01d" -> R.drawable.sunny_bg
-            "01n" -> R.drawable.night_bg
+            "01" -> {
+                initWeatherView(PrecipType.CLEAR)
+                R.drawable.snow_bg
+            }
+
+            "02", "03", "04" -> {
+                initWeatherView(PrecipType.CLEAR)
+                R.drawable.cloudy_bg
+            }
+
+            "09", "10", "11" -> {
+                initWeatherView(PrecipType.RAIN)
+                R.drawable.rainy_bg
+            }
+
+            "13" -> {
+                initWeatherView(PrecipType.SNOW)
+                R.drawable.snow_bg
+            }
+
+            "50" -> {
+                initWeatherView(PrecipType.CLEAR)
+                R.drawable.haze_bg
+            }
+
+            else -> 0
+        }
+    }
+
+    private fun setEffectRainSnow(icon: String) {
+        when (icon.dropLast(1)) {
+            "01" -> {
+                initWeatherView(PrecipType.CLEAR)
+
+            }
+
+            "02", "03", "04" -> {
+                initWeatherView(PrecipType.CLEAR)
+
+            }
+
+            "09", "10", "11" -> {
+                initWeatherView(PrecipType.RAIN)
+
+            }
+
+            "13" -> {
+                initWeatherView(PrecipType.SNOW)
+
+            }
+
+            "50" -> {
+                initWeatherView(PrecipType.CLEAR)
+
+            }
+
+
+        }
+    }
+
+    private fun initWeatherView(type: PrecipType) {
+
+        bindding.weatherView.apply {
+            setWeatherData(type)
+            angle = -20
+            emissionRate = 100.0f
+
         }
     }
 }
