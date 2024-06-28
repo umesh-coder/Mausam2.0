@@ -1,4 +1,9 @@
 
-hkotlin:S1874"#Deprecated code should not be used.(ä»§8­ÓÎÌ…2J$f8f7bce6-ef77-43d6-99ab-e53bd83741ab
-mkotlin:S1874d"#Deprecated code should not be used.(¥Óíøÿÿÿÿ8­ÓÎÌ…2J$e5839cbd-1308-4513-927a-b45e24518aca
-wkotlin:S6518‘",Replace function call with indexed accessor.(·ÎŠëıÿÿÿÿ8°ÓÎÌ…2J$abd8112c-d0af-41d8-bc94-4f92533164cc
+}kotlin:S1135•"2Complete the task associated to this TODO comment.(áÃæùÿÿÿÿ8ô£ºê…2J$a8b7883e-899b-42e4-941e-5f4ac44f9f38
+nkotlin:S1874±"#Deprecated code should not be used.(”¶’âúÿÿÿÿ8¤‹¾ê…2J$aa129831-c7d8-4843-a41f-638a943ac0ef
+hkotlin:S1874"#Deprecated code should not be used.(ä»§8ı£ºê…2J$dfcf25f7-7b68-470d-8785-dc7f14bf64ab
+mkotlin:S1874}"#Deprecated code should not be used.(¥Óíøÿÿÿÿ8ı£ºê…2J$531a4c7f-1053-442e-925a-57e3d0d624c9
+œkotlin:S3776-"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(¶Á»¬şÿÿÿÿ8ş£ºê…2J$d120e23b-35fd-41a9-adb9-db64eaf8abfb
+kotlin:S6529²"DReplace null check and collection size check with "!isNullOrEmpty()"(²ãŞÃıÿÿÿÿ8§‹¾ê…2J$47c1e359-98d9-4f6c-a2ba-ce66c83e46a7
+ kotlin:S1186"ZAdd a nested comment explaining why this function is empty or complete the implementation.(Ñ´¶8¤ºê…2J$ddbe82e0-6ff7-4acc-94bd-c1722aa29fc7
+wkotlin:S6518¶",Replace function call with indexed accessor.(·ÎŠëıÿÿÿÿ8ƒ¤ºê…2J$5253c4fd-0b13-4f68-8ec0-834be1863181
